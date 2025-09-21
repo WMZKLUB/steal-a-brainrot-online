@@ -98,6 +98,36 @@
 
     footer{max-width:1200px;margin:10px auto 34px;padding:0 16px;color:#99a3b0;font-size:13px}
     .card.locked { filter: grayscale(1) brightness(0.3); pointer-events: none; }
+
+    /* === Floating Action Button === */
+    .fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    .fab:hover {
+      background-color: #92baff; /* Lighter accent */
+    }
+    .fab:active {
+      transform: scale(0.95);
+    }
+    .fab svg {
+      width: 28px;
+      height: 28px;
+    }
   </style>
   <style>
     /* === Craft Machine (Simplified) === */
@@ -288,7 +318,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body>
   <header>
@@ -546,6 +575,7 @@
   const $rebirthInfo = document.getElementById('rebirthInfo');
   const $rebirthLevelList = document.getElementById('rebirthLevelList');
   const $cashSound = document.getElementById('cashSound');
+  const $fullscreenBtn = document.getElementById('fullscreenBtn');
 
 
   const SAVE_KEY = 'brainrot_tycoon_v7';
@@ -875,6 +905,41 @@ function makeCard(c){
     if (e.target == $indexModal) $indexModal.hidden = true;
     if (e.target == $rebirthModal) $rebirthModal.hidden = true;
   });
+
+  // Fullscreen Logic
+  if ($fullscreenBtn) {
+    const $fullscreenEnterIcon = $fullscreenBtn.querySelector('.icon-fullscreen-enter');
+    const $fullscreenExitIcon = $fullscreenBtn.querySelector('.icon-fullscreen-exit');
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    function updateFullscreenIcon() {
+      if (document.fullscreenElement) {
+        $fullscreenEnterIcon.style.display = 'none';
+        $fullscreenExitIcon.style.display = 'block';
+        $fullscreenBtn.title = 'Exit Fullscreen';
+      } else {
+        $fullscreenEnterIcon.style.display = 'block';
+        $fullscreenExitIcon.style.display = 'none';
+        $fullscreenBtn.title = 'Enter Fullscreen';
+      }
+    }
+
+    $fullscreenBtn.addEventListener('click', toggleFullscreen);
+    document.addEventListener('fullscreenchange', updateFullscreenIcon);
+    updateFullscreenIcon();
+  }
+
   setInterval(()=>{
     const timeDelta = TICK_MS / 1000;
     state.ownedCharacters.forEach(charInstance => {
@@ -1241,6 +1306,14 @@ window.addEventListener('click', e => { if (e.target === $craftModal) $craftModa
 setInterval(tickCrafts, 1000);
 }
 </script>
-<script type="module" src="/index.tsx"></script>
+
+  <button id="fullscreenBtn" class="fab" title="Toggle Fullscreen">
+    <svg class="icon-fullscreen-enter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path>
+    </svg>
+    <svg class="icon-fullscreen-exit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+      <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"></path>
+    </svg>
+  </button>
 </body>
 </html>
