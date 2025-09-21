@@ -1,0 +1,33 @@
+
+
+Bandito Axolito (Cost: $12.5k / Income: $90/s / Rarity: Epic)
+Malame Amarele (Cost: $23.5K / Income: $140/s / Rarity: Epic)
+Mangolini Parrocini (Cost: $38.5k / Income: $235/s / Rarity: Epic)
+Tirilikalika Tirilikalako (Cost: $ 75K / Income: $450/s / Rarity: Legendary)
+Brutto Gialutto (Cost: $600K / Income: $3K/s / Rarity: Mythic)
+Los Noobinis (Cost: $4.3M / Income: $12.5K/s / Rarity: Mythic)
+Las Cappucinas (Cost: $82.5M / Income: $135K/s / Rarity: Brainrot God)
+La Karkerkar Combinasion (Cost: $ 160M / Income: $17.5m/s / Rarity: Secret)
+Caramello Filtrello (Cost: $ 255K / Income: $1K/s / Rarity: Legendary)
+Signore Carapace (Cost: $ 320k / Income: $1.3k / Rarity: Legendary)
+Gorillo Subwoofero (Cost: $ 2.7M / Income: $7.7K / Rarity: Mythic)
+Anpali Babel (Cost: $48M / Income: $280K/s / Rarity: Brainrot God)
+La Sahur Combinasion (Cost: $550M / Income: $2M/s / Rarity: Secret)
+Orcalita Orcala (Cost: $45M / Income: $240k/s / Rarity: Brainrot God)
+Piccionetta Machina (Cost: $ 47M / Income: $270K/s / Rarity: Brainrot God)
+Antonio (Cost: $ 6M / Income: $18.5K/s / Rarity: Brainrot God)
+Tralaledon (Cost: $ 3B / Income: $27.5M / Rarity: Secret)
+Fragelo La La La (Cost: $ 125M / Income: $450K / Rarity: Secret)
+Los Bros (Cost: $ 2.6B / Income: $24M/s / Rarity: Secret)
+Trenzostruzzo Turbo 4000 (Cost: $100M / Income: $310K/s / Rarity: Secret)
+
+
+
+
+
+
+
+
+
+
+Fix "Craft" function and design: In the Craft Machine's Window: In the left tabs must shown Name and smal image of this Character; In the Brainrots Required section must be shown all required Brainrots - not x3, x2, numbers; and when I click Craft button - in the "Owned" tab - that characters must be paused earning (like these cards must be blacked), and do not add Craft Machine Brainrots to the Rarity Tabs, they must add only to Index tab's list.
