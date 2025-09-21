@@ -1,4 +1,5 @@
 {
-  "name": "Code execution",
-  "description": "Let Gemini execute Python code in a sandbox"
+  "name": "Steal a Brainrot ONLINE",
+  "description": "Let Gemini execute Python code in a sandbox",
+  "requestFramePermissions": []
 }
