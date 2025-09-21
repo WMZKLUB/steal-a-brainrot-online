@@ -575,7 +575,6 @@
   const $rebirthInfo = document.getElementById('rebirthInfo');
   const $rebirthLevelList = document.getElementById('rebirthLevelList');
   const $cashSound = document.getElementById('cashSound');
-  const $fullscreenBtn = document.getElementById('fullscreenBtn');
 
 
   const SAVE_KEY = 'brainrot_tycoon_v7';
@@ -905,40 +904,6 @@ function makeCard(c){
     if (e.target == $indexModal) $indexModal.hidden = true;
     if (e.target == $rebirthModal) $rebirthModal.hidden = true;
   });
-
-  // Fullscreen Logic
-  if ($fullscreenBtn) {
-    const $fullscreenEnterIcon = $fullscreenBtn.querySelector('.icon-fullscreen-enter');
-    const $fullscreenExitIcon = $fullscreenBtn.querySelector('.icon-fullscreen-exit');
-
-    function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => {
-          console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-        });
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
-      }
-    }
-
-    function updateFullscreenIcon() {
-      if (document.fullscreenElement) {
-        $fullscreenEnterIcon.style.display = 'none';
-        $fullscreenExitIcon.style.display = 'block';
-        $fullscreenBtn.title = 'Exit Fullscreen';
-      } else {
-        $fullscreenEnterIcon.style.display = 'block';
-        $fullscreenExitIcon.style.display = 'none';
-        $fullscreenBtn.title = 'Enter Fullscreen';
-      }
-    }
-
-    $fullscreenBtn.addEventListener('click', toggleFullscreen);
-    document.addEventListener('fullscreenchange', updateFullscreenIcon);
-    updateFullscreenIcon();
-  }
 
   setInterval(()=>{
     const timeDelta = TICK_MS / 1000;
@@ -1315,5 +1280,40 @@ setInterval(tickCrafts, 1000);
       <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"></path>
     </svg>
   </button>
+  <script>
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    if (fullscreenBtn) {
+      const fullscreenEnterIcon = fullscreenBtn.querySelector('.icon-fullscreen-enter');
+      const fullscreenExitIcon = fullscreenBtn.querySelector('.icon-fullscreen-exit');
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+
+      function updateFullscreenIcon() {
+        if (document.fullscreenElement) {
+          fullscreenEnterIcon.style.display = 'none';
+          fullscreenExitIcon.style.display = 'block';
+          fullscreenBtn.title = 'Exit Fullscreen';
+        } else {
+          fullscreenEnterIcon.style.display = 'block';
+          fullscreenExitIcon.style.display = 'none';
+          fullscreenBtn.title = 'Enter Fullscreen';
+        }
+      }
+
+      fullscreenBtn.addEventListener('click', toggleFullscreen);
+      document.addEventListener('fullscreenchange', updateFullscreenIcon);
+      updateFullscreenIcon(); // Initial check
+    }
+  </script>
 </body>
 </html>
